@@ -32,7 +32,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="absolute bottom-4 left-4 right-4">
           <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
           <p className="text-gray-200 text-sm line-clamp-2">
-            {t(project.description)}
+            {t(project.description as any)}
           </p>
         </div>
       </div>

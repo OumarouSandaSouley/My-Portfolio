@@ -25,6 +25,8 @@ interface FormData {
   message: string;
 }
 
+type FormField = keyof FormData;
+
 const initialFormData: FormData = {
   name: "",
   email: "",
@@ -42,18 +44,20 @@ export function Contact() {
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
     null
   );
+
   useEffect(() => {
     if (lang === "en") {
-      setSuccessMessage("Message sent succesfully");
-      seterrorMessage("An error occured. Try again later !");
+      setSuccessMessage("Message sent successfully");
+      seterrorMessage("An error occurred. Try again later!");
     } else {
       setSuccessMessage("Message envoyé avec succès !");
-      seterrorMessage("Une erreur est survenue. Réessayez plustard !");
+      seterrorMessage("Une erreur est survenue. Réessayez plus tard !");
     }
   }, [lang]);
 
-  const success = () => toast.success("Message sent succesfully");
-  const errorNotification = () => toast.error("An error occured. Try again later !");
+  const success = () => toast.success(successMessage);
+  const errorNotification = () => toast.error(errorMessage);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -81,7 +85,6 @@ export function Contact() {
     setSubmitStatus(null);
 
     try {
-      // Initialize EmailJS if not already initialized
       emailjs.init(EMAILJS_PUBLIC_KEY);
 
       const templateParams = {
@@ -89,8 +92,8 @@ export function Contact() {
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_name: "Oumarou Sanda Souley", // Add recipient name
-        reply_to: formData.email, // Enable reply-to functionality
+        to_name: "Oumarou Sanda Souley",
+        reply_to: formData.email,
       };
 
       const response = await emailjs.send(
@@ -101,7 +104,7 @@ export function Contact() {
 
       if (response.status === 200) {
         setSubmitStatus("success");
-        success()
+        success();
         setFormData(initialFormData);
       } else {
         throw new Error("Failed to send email");
@@ -118,12 +121,13 @@ export function Contact() {
   const isFormValid =
     formData.email && formData.name && formData.subject && formData.message;
 
+  const formFields: FormField[] = ["name", "email", "subject", "message"];
+
   return (
     <section
       className="relative bg-white dark:bg-gray-900 py-20 overflow-hidden"
       id="contact"
     >
-      {/* Rest of the JSX remains the same until the form button */}
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -149,7 +153,7 @@ export function Contact() {
             className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg relative z-10"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
-              {["name", "email", "subject", "message"].map((field) => (
+              {formFields.map((field) => (
                 <div key={field}>
                   <label
                     htmlFor={field}
@@ -162,7 +166,7 @@ export function Contact() {
                       id={field}
                       name={field}
                       required
-                      value={(formData as any)[field]}
+                      value={formData[field]}
                       onChange={handleChange}
                       rows={5}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
@@ -174,7 +178,7 @@ export function Contact() {
                       id={field}
                       name={field}
                       required
-                      value={(formData as any)[field]}
+                      value={formData[field]}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                       placeholder={`${t("your")} ${field}`}
@@ -226,7 +230,6 @@ export function Contact() {
             </form>
           </motion.div>
 
-          {/* Contact Info & Map section remains the same */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

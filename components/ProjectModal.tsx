@@ -37,7 +37,7 @@ export const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
             />
           </div>
           <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-            {t(project.fullDescription)}
+            {t(project.fullDescription as any)}
           </p>
           <div className="flex flex-wrap gap-2 mb-6">
             {project.techStack.map((tech) => (

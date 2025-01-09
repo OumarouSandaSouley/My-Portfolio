@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Globe2 } from "lucide-react";
-import { useChangeLocale, useCurrentLocale, useI18n } from "@/locales/client";
+import { useChangeLocale, useCurrentLocale } from "@/locales/client";
 import { motion, AnimatePresence } from "framer-motion";
 
 const languages = [
@@ -13,7 +13,7 @@ export const LanguageSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
   const changeLocale = useChangeLocale();
   const currentLocale = useCurrentLocale();
-  const t = useI18n();
+
 
   const handleLanguageChange = async (langCode: string) => {
     await changeLocale(langCode as "fr" | "en");

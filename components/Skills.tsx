@@ -11,7 +11,6 @@ import {
   FileEdit,
   GraduationCap,
   BookOpen,
-  CircleSlashed,
 } from "lucide-react";
 import Image from "next/image";
 import { useScopedI18n } from "@/locales/client";
