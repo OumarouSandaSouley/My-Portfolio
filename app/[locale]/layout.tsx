@@ -25,6 +25,7 @@ const RootLayout = async ({ children, params }: LayoutProps) => {
           </ThemeProvider>
         </Provider>
       </body>
+      <script src="https://feedyourback.com/tunnel.js" data-id='cm5rwe8ie018j12lv220jd6e7' defer ></script>
     </html>
   );
 };
