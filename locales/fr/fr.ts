@@ -155,8 +155,9 @@ export default {
     ContinuousLearning: "Apprentissage Continu",
     title: "Mes Compétences",
     technicalSkills: "Expertise Technique",
-    javaScript: "Passionné de JavaScript !",
-    description: "Du JS pur aux frameworks de pointe, je respire JavaScript !",
+    modernTechStack: "Passionné de Technologies Modernes !",
+    description:
+      "Des frameworks frontend aux API backend, maîtrisant tout le spectre du développement web moderne !",
     professionnalSkills: "Compétences Professionnelles",
   },
   hireMe: {

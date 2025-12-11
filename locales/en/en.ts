@@ -148,15 +148,15 @@ export default {
     TeamCollaboration: "Team Collaboration",
     AgileMethodologies: "Agile Methodologies",
     ProjectManagement: "Project Management",
-    CodeReview: "CodeReview",
+    CodeReview: "Code Review",
     TechnicalWriting: "Technical Writing",
     Mentoring: "Mentoring",
     ContinuousLearning: "Continuous Learning",
     title: "My Skills",
     technicalSkills: "Technical Expertise",
-    javaScript: "JavaScript Enthusiast!",
+    modernTechStack: "Modern Tech Stack Enthusiast!",
     description:
-      "From vanilla JS to cutting-edge frameworks, I breathe JavaScript!",
+      "From frontend frameworks to backend APIs, mastering the full spectrum of modern web development!",
     professionnalSkills: "Professional Skills",
   },
   hireMe: {
