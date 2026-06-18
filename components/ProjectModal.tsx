@@ -1,84 +1,97 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { X } from "lucide-react";
 import { Project } from "./types";
 import { useScopedI18n } from "@/locales/client";
+import { TechIcon } from "./TechIcons";
 
 interface ModalProps {
   project: Project;
   onClose: () => void;
 }
+
 export const Modal: React.FC<ModalProps> = ({ project, onClose }) => {
   const t = useScopedI18n("projects");
 
   return (
     <motion.div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black/40 flex items-center justify-center p-4 z-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      onClick={onClose}
     >
       <motion.div
-        className="bg-white dark:bg-gray-800 rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-        initial={{ scale: 0.9, opacity: 0 }}
+        className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        initial={{ scale: 0.96, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
+        exit={{ scale: 0.96, opacity: 0 }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-6">
-          <h2 className="text-3xl font-bold mb-4 dark:text-white">
+        <div className="relative h-64 sm:h-72 w-full bg-neutral-100">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+          />
+          <button
+            onClick={onClose}
+            aria-label={t("close")}
+            className="absolute top-4 right-4 flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-neutral-700 hover:bg-white transition-colors"
+          >
+            <X className="w-4 h-4" strokeWidth={1.75} />
+          </button>
+        </div>
+
+        <div className="p-6 lg:p-8">
+          <h2 className="text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">
             {project.title}
           </h2>
-          <div className="relative h-80 w-full mb-6 rounded-lg overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-            {t(project.fullDescription as any)}
+
+          <p className="text-neutral-600 text-[15px] leading-relaxed mb-6">
+            {project.fullDescription}
           </p>
-          <div className="flex flex-wrap gap-2 mb-6">
+
+          <div className="flex flex-wrap gap-2 mb-7">
             {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm px-3 py-1 rounded-full"
-              >
-                {tech}
-              </span>
+              <div key={tech} className="flex items-center gap-2">
+                <TechIcon name={tech} className="h-4 w-4 shrink-0" />
+                <span className="text-[13px] text-neutral-600 bg-neutral-50 px-3 py-1.5 rounded-full border border-neutral-200">
+                  {tech}
+                </span>
+              </div>
             ))}
           </div>
-          <div className="flex gap-4 mb-6">
-            {project.livePreview && (
-              <a
-                href={project.livePreview}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full transition-colors duration-300 text-lg font-semibold"
-              >
-                {t("livePreview")}
-              </a>
-            )}
-            {project.githubLink && (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2 rounded-full transition-colors duration-300 text-lg font-semibold"
-              >
-                {t("github")}
-              </a>
-            )}
-          </div>
-          <div className="w-full my-2 flex items-end justify-end">
-            <button
-              onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-lg"
-            >
-              {t("close")}
-            </button>
-          </div>
+
+          {(project.livePreview || project.githubLink) && (
+            <div className="flex flex-wrap gap-3">
+              {project.livePreview && (
+                <a
+                  href={project.livePreview}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-neutral-900 hover:bg-neutral-800 text-white px-6 py-2.5 rounded-full transition-colors duration-200 text-[14px] font-medium"
+                >
+                  {t("livePreview")}
+                </a>
+              )}
+              {project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-neutral-50 hover:bg-neutral-100 text-neutral-700 px-6 py-2.5 rounded-full border border-neutral-200 transition-colors duration-200 text-[14px] font-medium"
+                >
+                  {t("github")}
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>

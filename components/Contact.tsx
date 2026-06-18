@@ -34,6 +34,19 @@ const initialFormData: FormData = {
   message: "",
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 16, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+};
+
 export function Contact() {
   const t = useScopedI18n("contact");
   const lang = useCurrentLocale();
@@ -124,40 +137,41 @@ export function Contact() {
   const formFields: FormField[] = ["name", "email", "subject", "message"];
 
   return (
-    <section
-      className="relative bg-white dark:bg-gray-900 py-20 overflow-hidden"
-      id="contact"
-    >
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-24 lg:py-32 bg-white" id="contact">
+      <div className="container mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-12 lg:mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-neutral-900 tracking-tight">
             {t("getInTouch")}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-neutral-500 text-[17px] leading-relaxed mt-4">
             {t("subHeader")}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-3 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {/* Formulaire - cellule principale */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg relative z-10"
+            variants={itemVariants}
+            className="lg:col-span-2 rounded-2xl bg-neutral-50 p-6 lg:p-8"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {formFields.map((field) => (
                 <div key={field}>
                   <label
                     htmlFor={field}
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="block text-[13px] font-medium text-neutral-500 mb-1.5 capitalize"
                   >
                     {field}
                   </label>
@@ -169,7 +183,7 @@ export function Contact() {
                       value={formData[field]}
                       onChange={handleChange}
                       rows={5}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 transition-colors duration-200 resize-none text-[15px]"
                       placeholder={`${t("your")} ${field}`}
                     />
                   ) : (
@@ -180,7 +194,7 @@ export function Contact() {
                       required
                       value={formData[field]}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-900/10 focus:border-neutral-300 transition-colors duration-200 text-[15px]"
                       placeholder={`${t("your")} ${field}`}
                     />
                   )}
@@ -190,20 +204,20 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting || !isFormValid}
-                className={`w-full py-4 px-6 rounded-lg font-medium text-white flex items-center justify-center gap-2 transition-all duration-200 ${
+                className={`w-full py-3.5 px-6 rounded-full font-medium flex items-center justify-center gap-2 transition-colors duration-200 text-[15px] ${
                   isSubmitting || !isFormValid
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-500 hover:bg-blue-600"
+                    ? "bg-neutral-200 text-neutral-400 cursor-not-allowed"
+                    : "bg-neutral-900 hover:bg-neutral-800 text-white"
                 }`}
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     {t("sending")}
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
+                    <Send className="w-4 h-4" />
                     {t("sendMessage")}
                   </>
                 )}
@@ -213,16 +227,16 @@ export function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`flex items-center gap-2 ${
+                  className={`flex items-center gap-2 text-[14px] ${
                     submitStatus === "success"
-                      ? "text-green-500"
+                      ? "text-emerald-600"
                       : "text-red-500"
                   }`}
                 >
                   {submitStatus === "success" ? (
-                    <CheckCircle className="w-5 h-5" />
+                    <CheckCircle className="w-4 h-4" />
                   ) : (
-                    <AlertCircle className="w-5 h-5" />
+                    <AlertCircle className="w-4 h-4" />
                   )}
                   <span>{t(`${submitStatus}Message`)}</span>
                 </motion.div>
@@ -230,64 +244,62 @@ export function Contact() {
             </form>
           </motion.div>
 
+          {/* Infos de contact */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-8"
+            variants={itemVariants}
+            className="rounded-2xl bg-neutral-50 p-6 lg:p-7 flex flex-col gap-5"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-              <h3 className="text-xl font-semibold mb-6 dark:text-white">
-                Contact Information
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-blue-500 mt-1" />
-                  <div>
-                    <p className="font-medium dark:text-white">
-                      {t("location")}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300">Dougoy</p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Maroua, Cameroon
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 text-blue-500 mt-1" />
-                  <div>
-                    <p className="font-medium dark:text-white">{t("phone")}</p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      +237 690 72 69 25
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <Mail className="w-6 h-6 text-blue-500 mt-1" />
-                  <div>
-                    <p className="font-medium dark:text-white">{t("email")}</p>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      oumarousandasouleyofficial@gmail.com
-                    </p>
-                  </div>
-                </div>
+            <div className="flex items-start gap-3">
+              <MapPin className="w-4 h-4 text-neutral-400 mt-0.5 shrink-0" strokeWidth={1.5} />
+              <div>
+                <p className="text-[13px] font-medium text-neutral-400">
+                  {t("location")}
+                </p>
+                <p className="text-[15px] text-neutral-800 mt-0.5">Dougoy</p>
+                <p className="text-[15px] text-neutral-800">Maroua, Cameroun</p>
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.6690363668604!2d14.32962707502438!3d10.60502846233182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x111d9fdf2fb0840b%3A0xc244a6db2ec3f5c6!2sMosqu%C3%A9e%20March%C3%A9%20centrale!5e0!3m2!1sfr!2scm!4v1731608058212!5m2!1sfr!2scm"
-                width="600"
-                height="450"
-                loading="lazy"
-                className="w-full h-[300px] rounded-lg"
-              ></iframe>
+            <div className="flex items-start gap-3">
+              <Phone className="w-4 h-4 text-neutral-400 mt-0.5 shrink-0" strokeWidth={1.5} />
+              <div>
+                <p className="text-[13px] font-medium text-neutral-400">
+                  {t("phone")}
+                </p>
+                <p className="text-[15px] text-neutral-800 mt-0.5">
+                  +237 690 72 69 25
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <Mail className="w-4 h-4 text-neutral-400 mt-0.5 shrink-0" strokeWidth={1.5} />
+              <div>
+                <p className="text-[13px] font-medium text-neutral-400">
+                  {t("email")}
+                </p>
+                <p className="text-[15px] text-neutral-800 mt-0.5 break-all">
+                  oumarousandasouleyofficial@gmail.com
+                </p>
+              </div>
             </div>
           </motion.div>
-        </div>
+
+          {/* Carte - pleine largeur */}
+          <motion.div
+            variants={itemVariants}
+            className="lg:col-span-3 rounded-2xl bg-neutral-50 overflow-hidden p-2"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.6690363668604!2d14.32962707502438!3d10.60502846233182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x111d9fdf2fb0840b%3A0xc244a6db2ec3f5c6!2sMosqu%C3%A9e%20March%C3%A9%20centrale!5e0!3m2!1sfr!2scm!4v1731608058212!5m2!1sfr!2scm"
+              width="100%"
+              height="280"
+              loading="lazy"
+              className="w-full h-[280px] rounded-xl grayscale-[40%]"
+              title={t("mapAlt")}
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

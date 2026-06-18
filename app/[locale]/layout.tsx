@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Provider from "./Provider";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -13,19 +14,23 @@ export const metadata: Metadata = {
 const RootLayout = async ({ children, params }: LayoutProps) => {
   const { locale } = await params;
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
       </head>
-      <body className="w-full bg-gradient-to-b from-gray-950 to-black overflow-x-hidden">
+      <body className="w-full bg-white overflow-x-hidden">
         <Provider locale={locale}>
           <ThemeProvider>
             <ToastContainer />
             {children}
           </ThemeProvider>
         </Provider>
+        <Script
+          src="https://feedyourback.com/tunnel.js"
+          data-id="cm5rwe8ie018j12lv220jd6e7"
+          strategy="lazyOnload"
+        />
       </body>
-      <script src="https://feedyourback.com/tunnel.js" data-id='cm5rwe8ie018j12lv220jd6e7' defer ></script>
     </html>
   );
 };

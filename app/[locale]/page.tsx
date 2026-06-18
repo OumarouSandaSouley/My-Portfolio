@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import { BackToTop } from "@/components/BackToTop";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -12,17 +13,16 @@ import React from "react";
 
 const Page = async () => {
   return (
-    <main className="w-full max-w-screen-2xl mx-auto min-h-screen relative">
+    <main className="w-full min-h-screen relative bg-white">
       <Navbar />
-      <section className="py-20 md:py-10 sm:py-8 relative">
-        <Hero />
-      </section>
+      <Hero />
       <About />
+      <Skills />
       <Projects />
       <HireMe />
       <Contact />
-      <Skills />
       <Footer />
+      <BackToTop />
       <ShootingStars />
       <StarsBackground />
     </main>

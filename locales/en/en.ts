@@ -10,9 +10,9 @@ export default {
   hero: {
     availableForHire: "Available for hire",
     name: "Oumarou Sanda Souley",
-    title: "Web & Mobile Developer",
+    title: "Full-Stack Web & Mobile Developer",
     description:
-      "Transforming innovative ideas into exceptional digital experiences through cutting-edge web and mobile solutions. Dedicated to driving business growth, enhancing user engagement, and fostering meaningful connections.",
+      "I build robust web and mobile applications with React/Next.js, FastAPI and Django. Actively engaged in local tech communities, where I share my expertise and help grow the ecosystem",
     connectWithMe: "Connect with me:",
     downloadResume: "Download Resume",
     hireMe: "Hire Me",
@@ -33,7 +33,7 @@ export default {
   about: {
     title: "About Me",
     imageAlt: "Oumarou Sanda Souley working",
-    badge: "Tech communities leader",
+    badge: "Active member of the tech communities",
     description:
       "As a passionate Web and Mobile Developer from Cameroon, I've dedicated my career to crafting innovative digital solutions that drive business growth and enhance user experiences. With over 5 years of experience in the tech industry, I've had the privilege of working on a diverse range of projects, from cutting-edge web applications to intuitive mobile apps.",
     skills: {
@@ -77,52 +77,35 @@ export default {
     github: "GitHub",
     close: "Close",
 
-    // GNDC Website
+    saro: {
+      description:
+        "Intelligent school tracking application for secondary schools in Cameroon. Parents follow their children's attendance, grades, and schedules in real-time, with recommendations powered by AI.",
+      fullDescription:
+        "SARO allows parents to follow their children's school life in real-time: attendance, grades, schedule, everything is centralized and accessible from the mobile app. The system integrates AI recommendations to identify weak signals (repeated absences, declining grades) and offers local mobile payments via Orange Money and MTN MoMo through CamPay. School registration is free, and parents pay a monthly subscription per student.",
+    },
+    valentine: {
+      description:
+        "Serious dating app that matches users based on their genuine compatibility rather than their photos, through guided AI journaling, without swiping or ghosting.",
+      fullDescription:
+        "Développée en freelance pour G64 Labs, The Project Valentine remplace le swipe par un processus de mise en relation basé sur la compatibilité profonde. Les utilisateurs renseignent un journal guidé par IA qui dévoile leurs valeurs et leurs attentes réelles, reçoivent un match unique avec un taux de compatibilité, échangent une courte vidéo avant de se rencontrer, puis partagent un retour post-rendez-vous qui affine leur profil pour le match suivant. J'ai notamment travaillé sur les notifications push, l'intégration du paiement via Stripe Payment Sheet, et un système d'appel vocal propulsé par IA via l'API Realtime d'OpenAI et WebRTC.",
+    },
+    famla: {
+      description:
+        "SaaS platform that generates business process maps from AI interviews with teams to accelerate documentation and ISO certification.",
+      fullDescription:
+        "Contribution to G64 Labs on Famla AI, a platform that automates business process mapping by conducting AI interviews with stakeholders to accelerate documentation and ISO certification. I notably developed the voice journaling feature assisted by AI, as well as several other features and bug fixes on the backend API.",
+    },
     gndc: {
       description:
-        "Participated as project manager in the creation of the Grand Nord Developpers Community website.",
+        "Participation as project manager in the creation of the Grand Nord Développeurs website.",
       fullDescription:
-        "Led the project to design and develop the Grand Nord Developers Community website, which serves as an online presence for promoting tech initiatives in the region. The platform features a clean, responsive design and showcases key events and community projects.",
+        "Direction of the design and development of the Grand Nord Développeurs website, which serves as an online showcase to promote technological initiatives in the region. The platform offers a clean, responsive design, and highlights key community events and projects.",
     },
-
-    // WoilaTech website
-    woilatech: {
-      description:
-        "WoilaTech is an innovation-focused technology company with a mission to provide cutting-edge digital solutions to meet the growing needs of users in Africa and beyond.",
-      fullDescription:
-        "Developed the website for WoilaTech to highlight the company's innovative technology services. It features an intuitive interface, dynamic content updates, and a responsive design optimized for users in Africa and beyond.",
-    },
-
-    // Light R Digital website
     lightrdigital: {
       description:
-        "LIGHT R DIGITAL est une agence spécialisée en communication graphique et marketing digital, dédiée à créer une image de marque forte, impactante et rentable pour ses clients.",
+        "Website for Light R Digital, a specialized agency in graphic design and digital marketing.",
       fullDescription:
-        "Designed and implemented a website for Light R Digital to enhance their online presence. The site features a modern design, client portfolio, and integrations for effective lead generation and branding.",
-    },
-
-    // 40 Web Developer Projects
-    webDevProjects: {
-      description:
-        "A collection of 40 diverse web development projects showcasing a wide range of skills and technologies.",
-      fullDescription:
-        "This challenge involved creating 40 different web development projects, ranging from simple landing pages to complex applications. Each project focused on different aspects of web development, including responsive design, API integration, and interactive user interfaces. The collection demonstrates proficiency in front-end technologies, back-end development, and third-party API integrations.",
-    },
-
-    // JavaScript Mastery Mobile App
-    jsMastery: {
-      description:
-        "A comprehensive mobile learning platform for JavaScript enthusiasts, featuring interactive tutorials and code challenges.",
-      fullDescription:
-        "Developed for the JavaScript Mastery hackathon, this mobile app serves as a comprehensive learning platform for JavaScript enthusiasts. The app includes interactive tutorials, code challenges, and a community forum. It features a sleek, intuitive interface and employs gamification elements to enhance user engagement. The accompanying landing page showcases the app's features and encourages downloads.",
-    },
-
-    // Penpot AI Bio Generator Plugin
-    penpot: {
-      description:
-        "An AI-powered plugin for Penpot that generates creative and contextually relevant user biographies for UX/UI design projects.",
-      fullDescription:
-        "Created for the Penpot plugin contest, this AI-powered bio generator integrates seamlessly with Penpot's design interface. It uses OpenAI's GPT model to generate creative and contextually relevant user biographies based on input parameters. The plugin streamlines the process of creating user personas for UX/UI design projects, saving time and enhancing creativity in the design process.",
+        "Design and implementation of the Light R Digital website to strengthen their online presence. The site offers a modern design, a client portfolio, and integrations for effective lead generation and enhanced brand image.",
     },
   },
   contact: {
@@ -156,7 +139,7 @@ export default {
     technicalSkills: "Technical Expertise",
     modernTechStack: "Modern Tech Stack Enthusiast!",
     description:
-      "From frontend frameworks to backend APIs, mastering the full spectrum of modern web development!",
+  "A consistent technical stack from frontend frameworks to backend APIs, complemented by professional skills gained on the field.",
     professionnalSkills: "Professional Skills",
   },
   hireMe: {

@@ -2,31 +2,26 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Calendar, Zap, Target, MessageCircle } from "lucide-react";
+import { Calendar, Zap, Target, MessageCircle, ArrowUpRight } from "lucide-react";
 import { useCurrentLocale, useScopedI18n } from "@/locales/client";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+};
 
-const ReasonCard: React.FC<{
-  icon: React.ElementType;
-  title: string;
-  description: string;
-}> = ({ icon: Icon, title, description }) => (
-  <motion.div
-    className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    <Icon className="w-10 h-10 text-blue-500 mb-4" />
-    <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
-      {title}
-    </h3>
-    <p className="text-gray-600 dark:text-gray-300">{description}</p>
-  </motion.div>
-);
+const itemVariants = {
+  hidden: { y: 16, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+};
 
 export const HireMe: React.FC = () => {
-  const t = useScopedI18n("hireMe")
-  const lang = useCurrentLocale()
+  const t = useScopedI18n("hireMe");
+  const lang = useCurrentLocale();
+
   const reasons = [
     {
       icon: Calendar,
@@ -51,53 +46,66 @@ export const HireMe: React.FC = () => {
   ];
 
   return (
-    <section
-      className="py-20 bg-gray-100 dark:bg-gray-900 relative z-50"
-      id="hireMe"
-    >
-      <div className="container mx-auto px-4">
+    <section className="py-24 lg:py-32 bg-white" id="hireMe">
+      <div className="container mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-12 lg:mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-neutral-900 tracking-tight">
             {t("title")}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-neutral-500 text-[17px] leading-relaxed mt-4">
             {t("subtitle")}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {reasons.map((reason, index) => (
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-4 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {reasons.map(({ icon: Icon, title, description }) => (
             <motion.div
-              key={reason.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              key={title}
+              variants={itemVariants}
+              className="rounded-2xl bg-neutral-50 p-6 lg:p-7"
             >
-              <ReasonCard {...reason} />
+              <Icon className="h-5 w-5 text-neutral-900 mb-4" strokeWidth={1.5} />
+              <h3 className="font-medium text-neutral-900 text-[15px] mb-2">
+                {title}
+              </h3>
+              <p className="text-sm text-neutral-500 leading-relaxed">
+                {description}
+              </p>
             </motion.div>
           ))}
-        </div>
 
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <a
-            href={`/${lang}/#contact`}
-            className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-colors duration-300"
+          {/* CTA - pleine largeur, cellule sombre comme dans About */}
+          <motion.div
+            variants={itemVariants}
+            className="lg:col-span-4 rounded-2xl bg-neutral-900 p-7 lg:p-9 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
           >
-            {t("getInTouch")}
-          </a>
+            <div>
+              <h3 className="text-lg font-medium text-white mb-1">
+                {t("title")}
+              </h3>
+              <p className="text-neutral-400 leading-relaxed text-[15px] max-w-md">
+                {t("subtitle")}
+              </p>
+            </div>
+            <a href={`/${lang}/#contact`} className="shrink-0">
+              <span className="inline-flex items-center gap-1.5 bg-white hover:bg-neutral-100 text-neutral-900 font-medium rounded-full px-6 h-11 text-[15px] transition-colors group w-fit">
+                {t("getInTouch")}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

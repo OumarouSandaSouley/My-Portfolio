@@ -58,14 +58,14 @@ export const FloatingNav = ({ className }: { className?: string }) => {
             duration: 0.2,
           }}
           className={cn(
-            "flex max-w-fit fixed top-10 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-4 py-2 items-center justify-between space-x-4",
+            "flex max-w-fit fixed top-10 inset-x-0 mx-auto border border-slate-200/80 rounded-full bg-white/95 backdrop-blur-sm shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.08),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.06)] z-[5000] pr-2 pl-4 py-2 items-center justify-between space-x-4",
             className
           )}
         >
           {/* Mobile Menu Button */}
           <button
             onClick={toggleDrawer}
-            className="sm:hidden p-2 text-neutral-600 dark:text-neutral-300"
+            className="sm:hidden p-2 text-neutral-600"
           >
             <Menu size={20} />
           </button>
@@ -76,7 +76,7 @@ export const FloatingNav = ({ className }: { className?: string }) => {
               <Link
                 key={`link-${idx}`}
                 href={`/${lang}/${navItem.link}`}
-                className="relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 text-sm"
+                className="relative items-center flex space-x-1 text-neutral-600 hover:text-neutral-900 text-sm transition-colors"
               >
                 <span>{navItem.name}</span>
               </Link>
@@ -87,7 +87,7 @@ export const FloatingNav = ({ className }: { className?: string }) => {
           <div className="flex items-center space-x-4">
             <Link
               href={`/${lang}/#hireMe`}
-              className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
+              className="border text-sm font-medium relative border-neutral-200 text-slate-800 px-4 py-2 rounded-full hover:bg-slate-50 transition-colors"
             >
               <span>{t("hireMe")}</span>
               <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
@@ -116,12 +116,12 @@ export const FloatingNav = ({ className }: { className?: string }) => {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 20 }}
-              className="fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-900 z-[5001] shadow-xl"
+              className="fixed top-0 left-0 h-full w-64 bg-white z-[5001] shadow-xl"
             >
               <div className="p-4">
                 <button
                   onClick={toggleDrawer}
-                  className="absolute top-4 right-4 p-2 text-neutral-600 dark:text-neutral-300"
+                  className="absolute top-4 right-4 p-2 text-neutral-600"
                 >
                   <X size={20} />
                 </button>
@@ -132,7 +132,7 @@ export const FloatingNav = ({ className }: { className?: string }) => {
                       key={`drawer-link-${idx}`}
                       href={`/${lang}/${navItem.link}`}
                       onClick={toggleDrawer}
-                      className="block py-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                      className="block py-2 text-neutral-600 hover:text-neutral-900 transition-colors"
                     >
                       {navItem.name}
                     </Link>
