@@ -12,7 +12,7 @@ export default {
     name: "Oumarou Sanda Souley",
     title: "Full-Stack Web & Mobile Developer",
     description:
-      "I build robust web and mobile applications with React/Next.js, FastAPI and Django. Actively engaged in local tech communities, where I share my expertise and help grow the ecosystem",
+      "I build robust web and mobile applications with React/Next.js, React Native and Flutter on the front, FastAPI and Django on the back. Actively engaged in local tech communities, where I share my expertise and help grow the ecosystem",
     connectWithMe: "Connect with me:",
     downloadResume: "Download Resume",
     hireMe: "Hire Me",
@@ -64,6 +64,37 @@ export default {
         "I believe in a user-centric approach to development, combining technical expertise with a deep understanding of user needs. My goal is not just to write code, but to create digital experiences that resonate with users and drive tangible results for businesses.",
     },
     contactButton: "Get in contact now",
+  },
+  education: {
+    title: "Education",
+    description:
+      "My academic path in computer science, from the science track to a Master's degree at the University of Maroua.",
+    inProgress: "In progress",
+    items: {
+      master: {
+        degree: "Master's Year 1 in Computer Science",
+        specialization:
+          "Mathematics & Computer Science — Fundamental Computer Science track",
+        school: "Faculty of Sciences, University of Maroua",
+        location: "Maroua, Cameroon",
+        period: "2025 – 2026",
+      },
+      licence: {
+        degree: "Bachelor's in Computer Science",
+        specialization: "Fundamental Computer Science track",
+        school: "Faculty of Sciences, University of Maroua",
+        location: "Maroua, Cameroon",
+        period: "2024 – 2025",
+      },
+      baccalaureat: {
+        degree: "High School Diploma",
+        specialization:
+          'General Baccalaureate — Track "C", Mathematics & Physics',
+        school: "Lycée Classique et Moderne de Maroua",
+        location: "Maroua, Cameroon",
+        period: "2021 – 2022",
+      },
+    },
   },
   projects: {
     title: "My Projects",
@@ -157,5 +188,11 @@ export default {
     clearCommunicationDescription:
       "Regular updates and responsive to your inquiries.",
     getInTouch: "Get in Touch",
+  },
+  floatingCta: {
+    toggle: "Open quick contacts",
+    whatsapp: "WhatsApp",
+    cv: "My Resume",
+    email: "Email",
   },
 } as const;

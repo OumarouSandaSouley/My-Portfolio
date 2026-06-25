@@ -1,6 +1,8 @@
 import About from "@/components/About";
 import { BackToTop } from "@/components/BackToTop";
 import { Contact } from "@/components/Contact";
+import { Education } from "@/components/Education";
+import { FloatingCTA } from "@/components/FloatingCTA";
 import { Footer } from "@/components/Footer";
 import Hero from "@/components/Hero";
 import { HireMe } from "@/components/HireMe";
@@ -17,11 +19,13 @@ const Page = async () => {
       <Navbar />
       <Hero />
       <About />
+      <Education />
       <Skills />
       <Projects />
       <HireMe />
       <Contact />
       <Footer />
+      <FloatingCTA />
       <BackToTop />
       <ShootingStars />
       <StarsBackground />

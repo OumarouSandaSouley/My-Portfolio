@@ -81,6 +81,18 @@ const PostgreSQL = ({ className }: IconProps) => (
   </svg>
 );
 
+const Flutter = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M14.314 0L2.3 12 6 15.7 21.684.012h-7.357L14.314 0zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z"/>
+  </svg>
+);
+
+const Dart = ({ className }: IconProps) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M4.105 4.105S9.158 1.58 11.684.316a3.079 3.079 0 0 1 1.481-.315c.766.047 1.677.788 1.677.788L24 9.948v9.789h-4.263V24H9.789l-9-9C.303 14.5 0 13.795 0 13.105c0-.319.18-.818.316-1.105l3.789-7.895zm.679.679v8.566c.078.078.156.157.235.243a1.7 1.7 0 0 0 1.244.566h7.481v8.252l4.263-4.263V9.789l-9.789-9.789z"/>
+  </svg>
+);
+
 /**
  * Map nom -> composant logo + couleur de marque.
  * Le nom sert de clé exacte (insensible à la casse / espaces ignorés au lookup).
@@ -102,6 +114,8 @@ const ICONS: Record<string, { Icon: React.FC<IconProps>; color: string }> = {
   fastapi: { Icon: FastAPI, color: "#009688" },
   django: { Icon: Django, color: "#0C4B33" },
   postgresql: { Icon: PostgreSQL, color: "#4169E1" },
+  flutter: { Icon: Flutter, color: "#02569B" },
+  dart: { Icon: Dart, color: "#0175C2" },
 };
 
 type TechIconProps = {

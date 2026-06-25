@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ProjectCard } from "./ProjectCard";
 import { Modal } from "./ProjectModal";
 import { Project } from "./types";
 import { useScopedI18n } from "@/locales/client";

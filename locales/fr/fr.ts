@@ -12,7 +12,7 @@ export default {
     name: "Oumarou Sanda Souley",
     title: "Développeur Full-Stack Web et Mobile",
     description:
-      "Je conçois des applications web et mobiles robustes avec React/Next.js, FastAPI et Django. Activement engagé dans les communautés tech locales, où je partage mon expertise et contribue à faire grandir l'écosystème",
+      "Je conçois des applications web et mobiles robustes avec React/Next.js, React Native et Flutter côté front, FastAPI et Django côté back. Activement engagé dans les communautés tech locales, où je partage mon expertise et contribue à faire grandir l'écosystème",
     connectWithMe: "Connectez-vous avec moi :",
     downloadResume: "Télécharger le CV",
     hireMe: "Engagez-moi",
@@ -64,6 +64,37 @@ export default {
         "Je crois en une approche centrée sur l'utilisateur pour le développement, alliant expertise technique et compréhension approfondie des besoins des utilisateurs. Mon objectif n'est pas seulement d'écrire du code, mais de créer des expériences numériques qui résonnent avec les utilisateurs et produisent des résultats concrets pour les entreprises.",
     },
     contactButton: "Contactez-moi dès maintenant",
+  },
+  education: {
+    title: "Parcours Scolaire",
+    description:
+      "Mon parcours académique en informatique, de la filière scientifique au Master, à l'Université de Maroua.",
+    inProgress: "En cours",
+    items: {
+      master: {
+        degree: "Master I en Informatique",
+        specialization:
+          "Master I en Mathématiques-Informatique — Option Informatique Fondamentale",
+        school: "FS/ Université de Maroua",
+        location: "Maroua, Cameroun",
+        period: "2025 – 2026",
+      },
+      licence: {
+        degree: "Licence en Informatique",
+        specialization: "Option Informatique Fondamentale",
+        school: "FS/ Université de Maroua",
+        location: "Maroua, Cameroun",
+        period: "2024 – 2025",
+      },
+      baccalaureat: {
+        degree: "Baccalauréat",
+        specialization:
+          'Baccalauréat général — Option "C", Mathématiques-Sciences Physiques',
+        school: "Lycée Classique et Moderne de Maroua",
+        location: "Maroua, Cameroun",
+        period: "2021 – 2022",
+      },
+    },
   },
   projects: {
     title: "Mes Projets",
@@ -188,5 +219,11 @@ export default {
     clearCommunicationDescription:
       "Mises à jour régulières et réactivité à vos demandes.",
     getInTouch: "Contactez-moi",
+  },
+  floatingCta: {
+    toggle: "Ouvrir les contacts rapides",
+    whatsapp: "WhatsApp",
+    cv: "Mon CV",
+    email: "Email",
   },
 } as const;

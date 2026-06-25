@@ -18,11 +18,11 @@ import { TechIcon } from "./TechIcons";
 const skillGroups = [
   {
     label: "Langages",
-    items: ["JavaScript", "TypeScript", "Python"],
+    items: ["JavaScript", "TypeScript", "Python", "Dart"],
   },
   {
     label: "Frontend",
-    items: ["React", "Next.js", "React Native", "Vue.js", "Tailwind CSS"],
+    items: ["React", "Next.js", "React Native", "Flutter", "Vue.js", "Tailwind CSS"],
   },
   {
     label: "Backend",
