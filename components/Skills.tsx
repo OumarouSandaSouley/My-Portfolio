@@ -26,7 +26,7 @@ const skillGroups = [
   },
   {
     label: "Backend",
-    items: ["Node.js", "FastAPI", "Django", "PostgreSQL"],
+    items: ["Node.js", "NestJS", "FastAPI", "Django", "PostgreSQL"],
   },
 ];
 

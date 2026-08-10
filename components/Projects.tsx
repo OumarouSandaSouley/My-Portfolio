@@ -16,7 +16,7 @@ export function Projects() {
       title: "SARO",
       description: t("saro.description"),
       image: "/projects/saro.png",
-      techStack: ["Next.js", "React Native", "Supabase", "CamPay"],
+      techStack: ["Next.js", "React Native", "NestJS", "CamPay"],
       livePreview: "https://saro.saaretech.com/",
       githubLink: "",
       fullDescription: t("saro.fullDescription"),

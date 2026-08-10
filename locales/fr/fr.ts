@@ -10,9 +10,9 @@ export default {
   hero: {
     availableForHire: "Disponible pour des missions",
     name: "Oumarou Sanda Souley",
-    title: "Développeur Full-Stack Web et Mobile",
+    title: "Développeur Web et Mobile",
     description:
-      "Je conçois des applications web et mobiles robustes avec React/Next.js, React Native et Flutter côté front, FastAPI et Django côté back. Activement engagé dans les communautés tech locales, où je partage mon expertise et contribue à faire grandir l'écosystème",
+      "Je développe des applications web et mobiles performantes et évolutives en utilisant React/Next.js, Flutter, NestJS, FastAPI et Django. Passionné par le clean code, j'aide les entreprises à transformer leurs projets en expériences fluides tout en m'impliquant activement dans les communautés tech locales.",
     connectWithMe: "Connectez-vous avec moi :",
     downloadResume: "Télécharger le CV",
     hireMe: "Engagez-moi",
